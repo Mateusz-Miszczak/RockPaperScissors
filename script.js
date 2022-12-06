@@ -29,18 +29,18 @@ const getResult = (playerChoice, computerChoice) => {
 };
 
 const showResult = (score, playerChoice, computerChoice) => {
-  let realScore = 0;
-
-  if (score == -1) {
-    realScore--;
-    result.innerText = "You lose!";
-  } else if (score == 1) {
-    realScore++;
-    result.innerText = "You win!";
-  } else {
-    result.innerText = "It's a draw!";
+  switch (score) {
+    case 1:
+      result.innerText = " You win!";
+      break;
+    case -1:
+      result.innerText = " You lose!";
+      break;
+    case 0:
+      result.innerText = " It's a draw!";
+      break;
   }
-  playerScore.innerText = realScore;
+  playerScore.innerText = `${Number(playerScore.innerText) + score}`;
   hands.innerText = `Player chose: ${playerChoice} vs Computer chose: ${computerChoice}`;
 };
 
@@ -56,9 +56,7 @@ const playGame = () => {
       onClickRPS(btn);
     });
   });
-  resetButton.addEventListener("click", () => {
-    endGame();
-  });
+  resetButton.addEventListener("click", () => endGame());
 };
 
 const endGame = () => {
