@@ -1,6 +1,6 @@
 "use strict";
 
-const threeButtons = document.querySelectorAll("rps-btn");
+const threeButtons = document.querySelectorAll(".rps-btn");
 const playerScore = document.getElementById("player-score");
 const hands = document.getElementById("hands");
 const result = document.getElementById("result");
@@ -27,3 +27,44 @@ const getResult = (playerChoice, computerChoice) => {
   }
   return score;
 };
+
+const showResult = (score, playerChoice, computerChoice) => {
+  let realScore = 0;
+
+  if (score == -1) {
+    realScore--;
+    result.innerText = "You lose!";
+  } else if (score == 1) {
+    realScore++;
+    result.innerText = "You win!";
+  } else {
+    result.innerText = "It's a draw!";
+  }
+  playerScore.innerText = realScore;
+  hands.innerText = `Player chose: ${playerChoice} vs Computer chose: ${computerChoice}`;
+};
+
+const onClickRPS = (playerChoice) => {
+  const computerChoice = getRandomChoice();
+  const score = getResult(playerChoice.value, computerChoice);
+  showResult(score, playerChoice.value, computerChoice);
+};
+
+const playGame = () => {
+  threeButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      onClickRPS(btn);
+    });
+  });
+  resetButton.addEventListener("click", () => {
+    endGame();
+  });
+};
+
+const endGame = () => {
+  playerScore.innerText = "";
+  result.innerText = "";
+  hands.innerText = "";
+};
+
+playGame();
