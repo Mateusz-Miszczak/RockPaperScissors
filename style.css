@@ -35,9 +35,11 @@ button {
   border-radius: 3rem;
   cursor: pointer;
   transition: all 0.3s;
+
+  -webkit-tap-highlight-color: transparent;
 }
 
-button:hover {
+button:active {
   background-color: rgb(122, 85, 85);
   border: 0.5px solid rgb(54, 36, 36);
   transform: scale(1.1);
