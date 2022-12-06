@@ -41,7 +41,8 @@ const showResult = (score, playerChoice, computerChoice) => {
       break;
   }
   playerScore.innerText = `${Number(playerScore.innerText) + score}`;
-  hands.innerText = `Player chose: ${playerChoice} vs Computer chose: ${computerChoice}`;
+  hands.innerText = `Player chose: ${playerChoice}
+  Computer chose: ${computerChoice}`;
 };
 
 const onClickRPS = (playerChoice) => {
