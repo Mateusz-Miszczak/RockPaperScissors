@@ -54,3 +54,14 @@ button:hover {
 #result {
   margin-bottom: 2.4rem;
 }
+
+.description {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.description:nth-child(2) {
+  margin-bottom: 2rem;
+}

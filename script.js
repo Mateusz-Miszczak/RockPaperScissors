@@ -1,7 +1,10 @@
 "use strict";
 
 const threeButtons = document.querySelectorAll(".rps-btn");
+const yourScoreDescription = document.getElementById("your-score-description");
 const playerScore = document.getElementById("player-score");
+const pcScoreDescription = document.getElementById("pc-score-description");
+const computerScore = document.getElementById("computer-score");
 const hands = document.getElementById("hands");
 const result = document.getElementById("result");
 const resetButton = document.getElementById("end-game-btn");
@@ -31,16 +34,22 @@ const getResult = (playerChoice, computerChoice) => {
 const showResult = (score, playerChoice, computerChoice) => {
   switch (score) {
     case 1:
+      pcScoreDescription.innerText = "Computer score: ";
+      yourScoreDescription.innerText = "Your score: ";
+      playerScore.innerText = `${Number(playerScore.innerText) + score}`;
       result.innerText = " You win!";
       break;
     case -1:
+      yourScoreDescription.innerText = "Your score: ";
+      pcScoreDescription.innerText = "Computer score: ";
+      computerScore.innerText = `${Number(computerScore.innerText) + 1}`;
       result.innerText = " You lose!";
       break;
     case 0:
       result.innerText = " It's a draw!";
       break;
   }
-  playerScore.innerText = `${Number(playerScore.innerText) + score}`;
+
   hands.innerText = `Player chose: ${playerChoice}
   Computer chose: ${computerChoice}`;
 };
@@ -61,7 +70,10 @@ const playGame = () => {
 };
 
 const endGame = () => {
+  yourScoreDescription.innerText = "";
   playerScore.innerText = "";
+  pcScoreDescription.innerText = "";
+  computerScore.innerText = "";
   result.innerText = "";
   hands.innerText = "";
 };
